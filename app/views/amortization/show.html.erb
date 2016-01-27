@@ -1,0 +1,25 @@
+<%= link_to 'New Calculation', root_url %>
+<table>
+  <tr class="table-heading">
+    <th>Total no of Months</th>
+    <th>Opening Amount</th>
+    <th>Monthly Interest Amount</th>
+    <th>Total Interest Amount</th>
+    <th>Principal Amount</th>
+    <th>Closing Amount</th>
+    <th>Month of emi</th>
+    <th>Emi</th>
+  </tr>
+  <% @payment_details.each do |payment_detail| %>
+   <tr>
+      <td><%= payment_detail['total_number_of_months'] %></td>
+      <td><%= payment_detail['loan_amount'].round(2) %></td>
+      <td><%= payment_detail['monthly_interest_paid'].round(2)%></td>
+      <td><%= payment_detail['total_interest_paid'].round(2) %></td>
+      <td><%= payment_detail['principal_paid'].round(2) %></td>
+      <td><%= payment_detail['new_balance'].round(2) %></td>
+      <td><%= payment_detail['month_of_emi'] %></td>
+      <td><%= payment_detail['emi'].round(2) %></td>
+    </tr>
+  <% end %>
+</table>

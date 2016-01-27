@@ -1,0 +1,59 @@
+
+
+<%= form_for :amortization_detail, url: amortization_index_path do  |f|%>
+ 
+  <% if @amortization_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@amortization_detail.errors.count, "error") %> in the input for calculation
+      </h2>
+      <ul>
+        <% @amortization_detail.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <h4>
+  Enter the following details: 
+ </h4>
+  <p>
+    <%= f.label :loan_amount, "Loan Amount" %><br>
+    <%= f.text_field :loan_amount , required: true%>
+  </p>
+ 
+  <p>
+    <%= f.label :rate_of_interest, "Rate of Interest" %><br>
+    <%= f.text_field :rate_of_interest , :required => true %>
+  </p>
+
+  <p>
+    <%= f.label :tenure, "Tenure (In years)" %><br>
+    <%= f.text_field :tenure , :required => true%>
+  </p>
+
+<h4>Extra Payments (if you want to add): </h4>
+
+  <p>
+    <%= f.label :monthly_payment, "Monthly Payment" %><br>
+    <%= f.text_field :monthly_payment %>
+  </p>
+
+  <p>
+    <%= f.label :one_time_payment, "One-Time Payment" %><br>
+    <%= f.text_field :one_time_payment %>
+    <%= f.date_select :date_one_time_payment %>
+  </p>
+
+  <p>
+    <%= f.label :yearly_payment, "Yearly Payment" %><br>
+    <%= f.text_field :yearly_payment %>
+    <%= f.date_select :date_yearly_payment %>
+  </p>
+
+
+  <p>
+    <%= f.submit "Calculate Amortization", :class => 'submit-btn' %>
+  </p>
+ 
+<% end %>
